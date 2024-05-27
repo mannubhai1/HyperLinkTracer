@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Tracing of Hyperlinks on visited pages",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "scripting",
+    "nativeMessaging"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "HyperLink Tracer"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["details.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
+}
